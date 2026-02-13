@@ -85,6 +85,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { cn, sanitizeResponse } from "@/lib/utils";
 import toast from "react-hot-toast";
+import Link from "next/link";
 
 const TONES = [
   { id: "professional", label: "Professional", emoji: "👔" },
@@ -415,6 +416,24 @@ export default function Home() {
                   <Copy className="w-4 h-4" />
                 )}
                 {copied ? "Copied" : "Copy Text"}
+              </Button>
+              <Button
+                variant="premium"
+                disabled={!generatedPost}
+                className="gap-2 min-w-34 "
+              >
+                <Link
+                  href={`https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(
+                    generatedPost
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Post to LinkedIn"
+                  className="flex flex-row gap-1"
+                >
+                  <Linkedin className="w-4 h-4" />
+                  Post to LinkedIn
+                </Link>
               </Button>
             </div>
           </motion.div>

@@ -30,6 +30,8 @@ Strict Guidelines:
 - Clearly match the requested voice and audience
 - Avoid emojis spam (max 2)
 - Add a thoughtful closing line
+- Don't make it sound like AI-generated content
+- Don't make incomplete sentences or leave hanging thoughts
 - Optional: 2-3 relevant hashtags at the end
 
 Important:
