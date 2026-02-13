@@ -18,7 +18,7 @@ TrendMind is an AI-powered tool to help you generate engaging LinkedIn posts wit
 ### Installation
 1. Clone the repository:
 	```sh
-	git clone <repo-url>
+	git clone https://github.com/JeetDas5/linkedin-post-generator
 	cd linkedin-post-creator
 	```
 2. Install dependencies:

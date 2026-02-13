@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Space_Grotesk, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
 });
 
@@ -22,17 +24,22 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Set theme class on html element from localStorage (for SSR hydration)
-  // This is a workaround for Next.js apps to avoid theme flicker
   return (
     <html
       lang="en"
       suppressHydrationWarning
-      className={typeof window !== "undefined" ? (localStorage.getItem("theme") === "dark" ? "dark" : "") : "dark"}
+      className={
+        typeof window !== "undefined"
+          ? localStorage.getItem("theme") === "dark"
+            ? "dark"
+            : ""
+          : "dark"
+      }
     >
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-background text-foreground`}
+        className={`${spaceGrotesk.variable} ${geistMono.variable} antialiased min-h-screen bg-background text-foreground`}
       >
+        <Toaster position="bottom-right"/>
         {children}
       </body>
     </html>

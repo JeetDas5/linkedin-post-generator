@@ -41,11 +41,33 @@ function ThemeToggler() {
   };
 
   return (
-    <Button variant="ghost" size="icon" aria-label="Toggle theme" onClick={toggleTheme}>
+    <Button
+      variant="ghost"
+      size="icon"
+      aria-label="Toggle theme"
+      onClick={toggleTheme}
+    >
       {theme === "dark" ? (
-        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" /></svg>
+        <svg
+          width="20"
+          height="20"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
+        </svg>
       ) : (
-        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="5" /><path d="M12 1v2m0 18v2m11-11h-2M3 12H1m16.95 6.95l-1.41-1.41M6.34 6.34L4.93 4.93m12.02 0l-1.41 1.41M6.34 17.66l-1.41 1.41" /></svg>
+        <svg
+          width="20"
+          height="20"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <circle cx="12" cy="12" r="5" />
+          <path d="M12 1v2m0 18v2m11-11h-2M3 12H1m16.95 6.95l-1.41-1.41M6.34 6.34L4.93 4.93m12.02 0l-1.41 1.41M6.34 17.66l-1.41 1.41" />
+        </svg>
       )}
     </Button>
   );
@@ -62,6 +84,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { cn, sanitizeResponse } from "@/lib/utils";
+import toast from "react-hot-toast";
 
 const TONES = [
   { id: "professional", label: "Professional", emoji: "👔" },
@@ -84,21 +107,41 @@ export default function Home() {
   const [isFullScreen, setIsFullScreen] = useState(false);
 
   const handleGenerate = async () => {
-    if (!topic) return;
-    setIsGenerating(true);
-    const result = await GeneratePost({
-      voice: tone,
-      audience,
-      topic,
-      length: length.toLowerCase(),
-    });
-    console.log("Post result: ", result);
-    if (!result) {
-      setGeneratedPost("Failed to generate post. Please try again.");
-    } else {
-      setGeneratedPost(sanitizeResponse(result));
+    if (!topic.trim()) {
+      toast.error("Please enter a topic for the post.");
+      return;
     }
-    setIsGenerating(false);
+    if (!audience.trim()) {
+      toast.error("Please specify the target audience.");
+      return;
+    }
+
+    setIsGenerating(true);
+    try {
+      const result = await GeneratePost({
+        voice: tone,
+        audience,
+        topic,
+        length: length.toLowerCase(),
+      });
+      console.log("Post result: ", result);
+      if (!result) {
+        setGeneratedPost("Failed to generate post. Please try again.");
+      } else {
+        toast.success("Post generated successfully!");
+        setGeneratedPost(sanitizeResponse(result));
+      }
+    } catch (error: any) {
+      let message = "Failed to generate post.";
+      if (error?.response?.data?.error) {
+        message = error.response.data.error;
+      } else if (error instanceof Error && error.message) {
+        message = error.message;
+      }
+      toast.error(message);
+    } finally {
+      setIsGenerating(false);
+    }
   };
 
   const copyToClipboard = () => {
@@ -126,7 +169,7 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+      <main className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 lg:py-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -134,7 +177,7 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="lg:col-span-5 space-y-6"
           >
-            <div className="flex items-center gap-2 mb-2">
+            <div className="flex items-center gap-2 mb-4">
               <Edit3 className="w-5 h-5 text-indigo-500" />
               <h2 className="text-2xl font-semibold tracking-tight">
                 Create Post
@@ -303,7 +346,7 @@ export default function Home() {
                       Software Developer at TrendMind
                     </div>
                     <div className="text-xs text-muted-foreground truncate">
-                      1h {"•"} <Globe className="w-3.5 h-3.5 inline-block" />
+                      2h {"•"} <Globe className="w-3.5 h-3.5 inline-block" />
                     </div>
                   </div>
                 </div>
