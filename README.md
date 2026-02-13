@@ -25,7 +25,7 @@ Check out the live demo of TrendMind on Vercel: [https://linkedin-post-generator
 1. Clone the repository:
    ```sh
    git clone https://github.com/JeetDas5/linkedin-post-generator
-   cd linkedin-post-creator
+   cd linkedin-post-generator
    ```
 2. Install dependencies:
    ```sh
