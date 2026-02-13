@@ -259,7 +259,7 @@ export default function Home() {
               <CardFooter className="bg-white/2 border-t border-white/5 p-6">
                 <Button
                   onClick={handleGenerate}
-                  disabled={!topic || isGenerating}
+                  disabled={!topic || !audience || isGenerating}
                   size="lg"
                   className="w-full relative overflow-hidden group"
                   variant="premium"
