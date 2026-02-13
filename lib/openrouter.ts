@@ -1,6 +1,6 @@
 import OpenAI from "openai";
 
-if(!process.env.OPENROUTER_API_KEY) {
+if (!process.env.OPENROUTER_API_KEY) {
   throw new Error("OPENROUTER_API_KEY environment variable is not set");
 }
 
