@@ -1,10 +1,10 @@
-# TrendMind: LinkedIn Post Creator
+# LinkPost AI — LinkedIn Post Creator
 
-TrendMind is an AI-powered tool to help you generate engaging LinkedIn posts with ease. Switch between light and dark themes, and enjoy a modern, responsive UI.
+LinkPost AI is an AI-powered tool to help you generate engaging LinkedIn posts with ease. Switch between light and dark themes, and enjoy a modern, responsive UI.
 
 ## Live Demo
 
-Check out the live demo of TrendMind on Vercel: [https://linkedin-post-generator-vert.vercel.app](https://linkedin-post-generator-vert.vercel.app)
+Check out the live demo of TrendMind on Vercel: [https://linkpostai.jeetdas.site](https://linkpostai.jeetdas.site)
 
 ## Features
 
@@ -24,8 +24,8 @@ Check out the live demo of TrendMind on Vercel: [https://linkedin-post-generator
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/JeetDas5/linkedin-post-generator
-   cd linkedin-post-generator
+   git clone https://github.com/JeetDas5/linkpostai
+   cd linkpostai
    ```
 2. Install dependencies:
    ```sh
@@ -58,34 +58,38 @@ Visit [http://localhost:3000](http://localhost:3000) in your browser.
 - `public/` — Static assets
 - `types/` — TypeScript type definitions
 
-
 ## API Structure
 
 ### `/api/generate` (POST)
+
 Generates a LinkedIn post using OpenRouter AI.
 
 **Request Body:**
+
 ```json
 {
-   "voice": "professional", // string, required
-   "audience": "Developers", // string, required
-   "topic": "AI in 2026",    // string, required
-   "length": "medium"        // string, optional (short|medium|long)
+  "voice": "professional", // string, required
+  "audience": "Developers", // string, required
+  "topic": "AI in 2026", // string, required
+  "length": "medium" // string, optional (short|medium|long)
 }
 ```
 
 **Response:**
+
 ```json
 {
-   "success": true,
-   "post": "...generated post..."
+  "success": true,
+  "post": "...generated post..."
 }
 ```
+
 or
+
 ```json
 {
-   "success": false,
-   "error": "Validation or generation error message."
+  "success": false,
+  "error": "Validation or generation error message."
 }
 ```
 

@@ -162,7 +162,7 @@ export default function Home() {
                 <Sparkles className="w-5 h-5 text-white" />
               </div>
               <span className="text-xl font-bold tracking-tight">
-                TrendMind
+                LinkPost AI
               </span>
             </div>
             <ThemeToggler />
@@ -226,7 +226,7 @@ export default function Home() {
                           "flex items-center justify-center gap-2 p-2.5 rounded-lg border text-sm font-medium transition-all hover:scale-[1.02] active:scale-[0.98]",
                           tone === t.id
                             ? "bg-indigo-500/10 border-indigo-500/50 text-indigo-400 ring-1 ring-indigo-500/20"
-                            : "bg-background/30 border-white/5 hover:bg-background/50 hover:border-white/10 text-muted-foreground"
+                            : "bg-background/30 border-white/5 hover:bg-background/50 hover:border-white/10 text-muted-foreground",
                         )}
                       >
                         <span>{t.emoji}</span>
@@ -247,7 +247,7 @@ export default function Home() {
                           "flex-1 px-3 py-1.5 rounded-md text-sm font-medium transition-all",
                           length === l
                             ? "bg-indigo-600 text-white shadow-sm"
-                            : "text-muted-foreground hover:text-foreground hover:bg-white/5"
+                            : "text-muted-foreground hover:text-foreground hover:bg-white/5",
                         )}
                       >
                         {l}
@@ -267,7 +267,7 @@ export default function Home() {
                   <span
                     className={cn(
                       "flex items-center gap-2 transition-all",
-                      isGenerating ? "opacity-0" : "opacity-100"
+                      isGenerating ? "opacity-0" : "opacity-100",
                     )}
                   >
                     <Sparkles className="w-4 h-4" />
@@ -317,7 +317,7 @@ export default function Home() {
                   ? "ring-1 ring-indigo-500/20 shadow-indigo-500/5"
                   : "border-dashed opacity-80",
                 isFullScreen &&
-                  "fixed inset-0 z-100 bg-background/95 p-8 flex flex-col justify-center items-center max-w-none w-screen h-screen"
+                  "fixed inset-0 z-100 bg-background/95 p-8 flex flex-col justify-center items-center max-w-none w-screen h-screen",
               )}
             >
               {isFullScreen && (
@@ -344,7 +344,7 @@ export default function Home() {
                       <span className="text-xs text-muted-foreground">1st</span>
                     </div>
                     <div className="text-xs text-muted-foreground truncate">
-                      Software Developer at TrendMind
+                      Software Developer at LinkPost AI
                     </div>
                     <div className="text-xs text-muted-foreground truncate">
                       2h {"•"} <Globe className="w-3.5 h-3.5 inline-block" />
@@ -407,7 +407,7 @@ export default function Home() {
                 disabled={!generatedPost}
                 className={cn(
                   "gap-2 min-w-25 transition-all",
-                  copied ? "bg-green-600 hover:bg-green-700 text-white" : ""
+                  copied ? "bg-green-600 hover:bg-green-700 text-white" : "",
                 )}
               >
                 {copied ? (
@@ -424,7 +424,7 @@ export default function Home() {
               >
                 <Link
                   href={`https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(
-                    generatedPost
+                    generatedPost,
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
